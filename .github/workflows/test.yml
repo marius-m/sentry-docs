@@ -18,7 +18,7 @@ jobs:
         id: cache
         with:
           path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-${{ hashfiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashfiles('**/yarn.lock') }}-${{ env.NODE_VERSION }}
       - run: yarn install
         if: steps.cache.outputs.cache-hit != 'true'
 
@@ -27,7 +27,7 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-${{ hashfiles('**/yarn.lock') }}-gatsby-build
+          key: ${{ runner.os }}-${{ hashfiles('**/yarn.lock') }}-gatsby-build-
       - name: yarn build
         run: yarn build
 
@@ -45,7 +45,7 @@ jobs:
         id: cache
         with:
           path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}-${{ env.NODE_VERSION }}
       - run: yarn install
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Run Linter
@@ -61,7 +61,7 @@ jobs:
         id: cache
         with:
           path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}-${{ env.NODE_VERSION }}
       - run: yarn install
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Run Tests
@@ -77,7 +77,7 @@ jobs:
         id: cache
         with:
           path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}-${{ env.NODE_VERSION }}
       - run: yarn install
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Run Tests
