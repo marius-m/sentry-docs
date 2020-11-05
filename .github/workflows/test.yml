@@ -27,7 +27,7 @@ jobs:
           path: |
             .cache
             public
-          key: ${{ runner.os }}-${{ hashfiles('**/yarn.lock') }}-gatsby-build-
+          key: ${{ runner.os }}-${{ hashfiles('**/yarn.lock') }}-gatsby-build-${{ env.NODE_VERSION }}
       - name: yarn build
         run: yarn build
 
