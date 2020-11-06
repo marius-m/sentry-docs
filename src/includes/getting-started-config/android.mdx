@@ -8,6 +8,15 @@ Configuration is done via `AndroidManifest.xml`:
 
 Or, if you are manually instrumenting Sentry:
 
+1. Disable auto-init in `AndroidManifest.xml`
+
+```xml {filename:AndroidManifest.xml}
+<application>
+  <meta-data android:name="io.sentry.auto-init" android:value="false" />
+</application>
+```
+2. Initialize Sentry library
+
 ```java
 import io.sentry.android.core.SentryAndroid;
 
